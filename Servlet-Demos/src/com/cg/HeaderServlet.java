@@ -18,7 +18,7 @@ public class HeaderServlet extends HttpServlet{
 		
 		Enumeration<String> headerNames = request.getHeaderNames();
 		
-		response.setContentType("text/xml");
+		response.setContentType("text/html");
 		
 		PrintWriter out = response.getWriter();
 		
