@@ -24,6 +24,15 @@ public class HeaderServlet extends HttpServlet{
 		
 		out.println("<html>");
 		out.println("<body>");
+
+		
+		out.println("<h2>");
+		String encodedURL = response.encodeURL("index.jsp");
+		System.out.println(encodedURL);
+		
+		out.println("<a href=\"" + encodedURL +"\">HOME</a>");
+		out.println("</h2>");
+
 		
 		out.println("<table border=\"1\">");
 		
@@ -41,7 +50,12 @@ public class HeaderServlet extends HttpServlet{
 			
 		}
 		
+		
 		out.println("</table>");
+		
+		
+		
+		
 		out.println("</body>");
 		out.println("</html>");
 		
