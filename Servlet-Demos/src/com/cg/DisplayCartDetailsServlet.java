@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //	TODO:1 Make DisplayCartDetailsServlet as a HttpServlet
 
@@ -27,8 +28,12 @@ public class DisplayCartDetailsServlet extends HttpServlet {
 
 		// String[] names = request.getParameterValues("bookName");
 
-		Set<String> books = (Set<String>) request.getAttribute("setOfBooks");
+//		Set<String> books = (Set<String>) request.getAttribute("setOfBooks");
 
+		HttpSession session = request.getSession(false);
+		
+		Set<String> books = (Set<String>) session.getAttribute("setOfBooks");
+		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 
