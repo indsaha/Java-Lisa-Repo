@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/storeDetails")
 public class StoreBookDetailsServlet extends HttpServlet{
@@ -25,16 +26,25 @@ public class StoreBookDetailsServlet extends HttpServlet{
 			books.add(name);
 		}
 		
-		request.setAttribute("setOfBooks", books);
+		HttpSession session = request.getSession(false);
+		
+		if(session == null){
+			System.out.println("No session available for client");
+			return;
+		}
+		
+		
+		session.setAttribute("setOfBooks", books);
+		
+//		request.setAttribute("setOfBooks", books);
 		
 		
 		
 		
-		
+		response.sendRedirect("displayDetails");
 	
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/displayDetails");
-		
+/*		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/displayDetails");
 		dispatcher.forward(request, response);
-		
+*/		
 	}
 }
